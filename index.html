@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#07070b" />
   <meta name="description" content="3D веб-открытка ко дню рождения." />
-  <title>С днём рождения ❤️</title>
+  <title>Для тебя ❤️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="intro-page">
   <main class="page">
-    <section class="card" aria-label="Поздравительная открытка">
+    <section class="card intro-card" aria-label="Вступление к открытке">
       <div class="glow glow-a"></div>
       <div class="glow glow-b"></div>
 
@@ -23,19 +23,18 @@
         <div class="heart heart-pink heart-6"><span>❤</span></div>
       </div>
 
-      <div class="content">
-        <div class="eyebrow">особенный день</div>
-        <h1>С днём<br /><span>рождения!</span></h1>
-        <p class="name" id="recipientName">Имя</p>
-        <p class="message" id="message">
-          Пусть каждый новый день будет наполнен светом, красивыми моментами,
-          любовью и поводами улыбаться.
-        </p>
-        <button class="wish-button" id="wishButton" type="button">
+      <div class="content intro-content">
+        <div class="eyebrow">небольшой сюрприз</div>
+        <div class="intro-heart" aria-hidden="true">♥</div>
+        <h1 class="intro-title">Для тебя<br /><span>есть кое-что особенное</span></h1>
+        <p class="intro-text">Нажми на кнопку — и откроется поздравление, которое я приготовил специально для тебя.</p>
+
+        <a class="wish-button page-link" href="page2.html" data-transition>
           <span class="button-spark">✦</span>
-          Открыть пожелание
-        </button>
-        <p class="signature" id="signature">С теплом и любовью ♥</p>
+          Открыть открытку
+        </a>
+
+        <p class="signature">С любовью ♥</p>
       </div>
 
       <div class="orbit orbit-1"></div>
@@ -43,7 +42,6 @@
       <div class="grain"></div>
     </section>
   </main>
-
   <script src="script.js"></script>
 </body>
 </html>
