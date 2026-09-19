@@ -102,6 +102,7 @@ h1 span {
   font-weight: 700;
   letter-spacing: .01em;
   color: #ffd9e4;
+  overflow-wrap: anywhere;
 }
 
 .message {
@@ -110,12 +111,14 @@ h1 span {
   color: var(--muted);
   font-size: clamp(15px, 1.7vw, 18px);
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .wish-button {
   margin-top: 30px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   min-height: 52px;
   padding: 0 22px;
@@ -127,6 +130,7 @@ h1 span {
   font-weight: 650;
   letter-spacing: .02em;
   cursor: pointer;
+  touch-action: manipulation;
   background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
   box-shadow: 0 14px 34px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.07);
   transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
@@ -253,22 +257,196 @@ h1 span {
   to { opacity: 1; transform: rotateX(0) translateY(0) scale(1); }
 }
 
+/* Мобильная версия */
 @media (max-width: 700px) {
-  body { overflow: auto; }
-  .page { padding: 14px; min-height: 100svh; }
-  .card { min-height: calc(100svh - 28px); border-radius: 26px; }
-  .content { width: 84%; }
-  .eyebrow { letter-spacing: .25em; }
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .page {
+    min-height: 100svh;
+    padding: 12px;
+    place-items: stretch;
+    perspective: none;
+  }
+
+  .card {
+    width: 100%;
+    min-height: calc(100svh - 24px);
+    padding: 42px 0;
+    border-radius: 28px;
+    place-items: center;
+    transform: none !important;
+  }
+
+  .content {
+    width: min(560px, 78%);
+    transform: none;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+    font-size: 9px;
+    letter-spacing: .24em;
+  }
+
+  h1 {
+    font-size: clamp(44px, 13vw, 72px);
+    line-height: .91;
+    letter-spacing: -.06em;
+  }
+
+  .name {
+    margin: 22px 0 12px;
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  .message {
+    width: 100%;
+    font-size: clamp(14px, 4vw, 16px);
+    line-height: 1.58;
+  }
+
+  .wish-button {
+    width: min(100%, 300px);
+    min-height: 56px;
+    margin-top: 22px;
+    padding: 0 18px;
+    font-size: 14px;
+  }
+
+  .signature {
+    margin-top: 20px;
+    font-size: 10px;
+  }
+
   .heart { width: 38px; }
-  .heart span { font-size: 44px; }
-  .heart-1 { left: 4%; top: 13%; }
-  .heart-2 { right: 3%; top: 12%; }
-  .heart-3 { left: 7%; bottom: 12%; }
-  .heart-4 { right: 6%; bottom: 11%; }
-  .heart-5 { left: 1%; }
-  .heart-6 { right: 1%; }
-  .message { font-size: 14px; line-height: 1.65; }
-  .wish-button { margin-top: 24px; }
+  .heart span {
+    font-size: 44px;
+    transform: rotate(-45deg) translateZ(15px);
+  }
+
+  .heart-1 {
+    top: 10%;
+    left: 2%;
+    transform: translateZ(18px) rotate(16deg);
+  }
+
+  .heart-2 {
+    top: 9%;
+    right: 2%;
+    transform: translateZ(22px) rotate(-14deg);
+  }
+
+  .heart-3 {
+    bottom: 9%;
+    left: 4%;
+    transform: translateZ(18px) rotate(-20deg);
+  }
+
+  .heart-4 {
+    bottom: 8%;
+    right: 4%;
+    transform: translateZ(24px) rotate(17deg);
+  }
+
+  .heart-5 {
+    top: 25%;
+    left: -1%;
+    transform: scale(.48) translateZ(10px) rotate(19deg);
+  }
+
+  .heart-6 {
+    bottom: 24%;
+    right: -1%;
+    transform: scale(.44) translateZ(8px) rotate(-22deg);
+  }
+
+  .glow-a { width: 180px; height: 180px; left: -10%; top: 2%; }
+  .glow-b { width: 180px; height: 180px; right: -10%; bottom: 2%; }
+
+  .orbit { width: 390px; height: 390px; opacity: .7; }
+  .orbit-2 { width: 500px; height: 220px; opacity: .55; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 8px; }
+
+  .card {
+    min-height: calc(100svh - 16px);
+    padding: 34px 0;
+    border-radius: 24px;
+  }
+
+  .content { width: 76%; }
+
+  .eyebrow { font-size: 8px; letter-spacing: .2em; }
+  h1 { font-size: clamp(40px, 13.5vw, 62px); }
+
+  .name {
+    margin-top: 19px;
+    font-size: clamp(21px, 6.8vw, 27px);
+  }
+
+  .message {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .wish-button {
+    width: 100%;
+    min-height: 54px;
+    margin-top: 20px;
+  }
+
+  .signature {
+    margin-top: 17px;
+    font-size: 9px;
+  }
+
+  .heart { width: 31px; }
+  .heart span { font-size: 37px; }
+
+  .heart-1 { left: 1%; top: 10%; }
+  .heart-2 { right: 1%; top: 9%; }
+  .heart-3 { left: 2%; bottom: 9%; }
+  .heart-4 { right: 2%; bottom: 8%; }
+}
+
+@media (max-width: 380px) {
+  .card { padding: 28px 0; }
+  .content { width: 72%; }
+
+  h1 { font-size: 38px; }
+  .name { font-size: 20px; margin-top: 17px; }
+  .message { font-size: 12.5px; }
+
+  .wish-button {
+    min-height: 52px;
+    font-size: 13px;
+  }
+
+  .heart { width: 27px; }
+  .heart span { font-size: 32px; }
+
+  .heart-5, .heart-6 { display: none; }
+}
+
+@media (max-height: 700px) and (max-width: 700px) {
+  .card {
+    min-height: auto;
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .heart-1, .heart-2 { top: 6%; }
+  .heart-3, .heart-4 { bottom: 6%; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .wish-button:hover { transform: none; }
+  .wish-button:active { transform: scale(.98); }
 }
 
 @media (prefers-reduced-motion: reduce) {
