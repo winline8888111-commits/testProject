@@ -449,10 +449,105 @@ h1 span {
   .wish-button:active { transform: scale(.98); }
 }
 
+
+/* Две страницы + плавный переход */
+body {
+  opacity: 1;
+  animation: pageEnter 650ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+body.page-leave {
+  animation: pageLeave 360ms ease both;
+  pointer-events: none;
+}
+
+.intro-content {
+  width: min(650px, 86%);
+}
+
+.intro-heart {
+  margin: 8px auto 18px;
+  font-size: 78px;
+  line-height: 1;
+  color: #ff416f;
+  transform: translateZ(70px);
+  text-shadow:
+    8px 12px 0 rgba(104, 0, 36, .22),
+    0 22px 42px rgba(255, 44, 101, .30);
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+
+.intro-title {
+  font-size: clamp(45px, 6.5vw, 78px);
+}
+
+.intro-title span {
+  font-size: .55em;
+  line-height: 1.05;
+  letter-spacing: -.03em;
+}
+
+.intro-text {
+  width: min(560px, 100%);
+  margin: 24px auto 0;
+  color: var(--muted);
+  font-size: clamp(14px, 1.7vw, 18px);
+  line-height: 1.7;
+}
+
+.page-link {
+  text-decoration: none;
+}
+
+.back-link {
+  display: block;
+  width: fit-content;
+  margin: 18px auto 0;
+  color: rgba(255,255,255,.46);
+  font-size: 12px;
+  text-decoration: none;
+  transition: color .2s ease, transform .2s ease;
+}
+
+.back-link:hover {
+  color: #ffd1df;
+  transform: translateX(-2px);
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(14px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pageLeave {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-10px) scale(.985); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: translateZ(70px) scale(1); }
+  10%, 28% { transform: translateZ(70px) scale(1.05); }
+  18% { transform: translateZ(70px) scale(.98); }
+}
+
+@media (max-width: 700px) {
+  .intro-content { width: min(570px, 78%); }
+  .intro-heart { font-size: 64px; margin-bottom: 14px; }
+  .intro-title { font-size: clamp(40px, 11.8vw, 62px); }
+  .intro-text { font-size: 13.5px; line-height: 1.58; margin-top: 19px; }
+  .back-link { margin-top: 16px; font-size: 11px; }
+}
+
+@media (max-width: 380px) {
+  .intro-content { width: 72%; }
+  .intro-heart { font-size: 54px; }
+  .intro-title { font-size: 36px; }
+  .intro-text { font-size: 12.5px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+  body, body.page-leave, .intro-heart {
+    animation: none !important;
   }
 }
+
