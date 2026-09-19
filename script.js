@@ -1,5 +1,5 @@
 // ЗАМЕНИТЕ ЭТУ СТРОКУ — здесь будет имя получателя.
-const recipientName = "Имя";
+const recipientName = "Рабия";
 
 const params = new URLSearchParams(window.location.search);
 const queryName = params.get("name");
